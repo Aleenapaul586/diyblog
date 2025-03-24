@@ -1,0 +1,335 @@
+{% extends "blogs/base.html" %}
+{% load static %}
+
+{% block title %}Welcome to DIY Blog{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <div class="hero-content">
+        <h1 class="display-4">Welcome to DIY Blog</h1>
+        <p class="lead">A community of bloggers sharing their thoughts and experiences.</p>
+        {% if not user.is_authenticated %}
+            <div class="cta-buttons">
+                <a href="{% url 'login' %}" class="btn btn-primary btn-lg">
+                    <i class="fas fa-sign-in-alt me-2"></i>Login
+                </a>
+                <a href="{% url 'register' %}" class="btn btn-outline-primary btn-lg">
+                    <i class="fas fa-user-plus me-2"></i>Register
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<div class="features-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="feature-card">
+                    <i class="fas fa-book-reader fa-2x text-primary"></i>
+                    <h3>Read Posts</h3>
+                    <p>Discover interesting blog posts from our community</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="feature-card">
+                    <i class="fas fa-users fa-2x text-primary"></i>
+                    <h3>Follow Bloggers</h3>
+                    <p>Connect with your favorite content creators</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="feature-card">
+                    <i class="fas fa-comments fa-2x text-primary"></i>
+                    <h3>Join Discussions</h3>
+                    <p>Engage in meaningful conversations through comments</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="feature-card">
+                    <i class="fas fa-pencil-alt fa-2x text-primary"></i>
+                    <h3>Create Content</h3>
+                    <p>Share your own stories with the community</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="getting-started-section">
+    <div class="container">
+        <h2 class="text-center mb-4">Getting Started</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card action-card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-newspaper fa-3x text-primary mb-3"></i>
+                        <h3>Latest Blog Posts</h3>
+                        <p>Explore the newest content from our community</p>
+                        <a href="{% url 'blogs' %}" class="btn btn-primary">
+                            <i class="fas fa-arrow-right me-2"></i>Browse Posts
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card action-card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-users fa-3x text-primary mb-3"></i>
+                        <h3>Meet Our Bloggers</h3>
+                        <p>Connect with talented writers in our community</p>
+                        <a href="{% url 'bloggers' %}" class="btn btn-primary">
+                            <i class="fas fa-arrow-right me-2"></i>View Bloggers
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.hero-section {
+    background: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%);
+    color: white;
+    padding: 4rem 0;
+    text-align: center;
+    border-radius: 0 0 2rem 2rem;
+    margin-bottom: 3rem;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.hero-content h1 {
+    margin-bottom: 1rem;
+    font-weight: 600;
+    animation: slideInLeft 0.8s ease-out;
+}
+
+.hero-content .lead {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    animation: slideInRight 0.8s ease-out;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    animation: fadeIn 1s ease-out 0.5s both;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.cta-buttons .btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cta-buttons .btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.features-section {
+    padding: 3rem 0;
+    background-color: #f8f9fa;
+    border-radius: 1rem;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.3s forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.feature-card {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    height: 100%;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: fadeIn 0.8s ease-out backwards;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.feature-card i {
+    margin-bottom: 1rem;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.feature-card:hover i {
+    transform: scale(1.2) rotate(5deg);
+    color: #000DFF;
+}
+
+.getting-started-section {
+    padding: 3rem 0;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.6s forwards;
+}
+
+.action-card {
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.action-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(107,115,255,0.1) 0%, rgba(0,13,255,0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.action-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+}
+
+.action-card:hover::before {
+    opacity: 1;
+}
+
+.action-card i {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.action-card:hover i {
+    transform: scale(1.1) rotate(10deg);
+    color: #000DFF;
+}
+
+.btn-primary {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255,255,255,0.2);
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    transition: transform 0.6s ease-out;
+}
+
+.btn-primary:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.btn-outline-primary {
+    color: white;
+    border-color: white;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-outline-primary:hover {
+    background-color: white;
+    color: #000DFF;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+@media (max-width: 768px) {
+    .features-section .col-md-3 {
+        margin-bottom: 1.5rem;
+    }
+    
+    .getting-started-section .col-md-6 {
+        margin-bottom: 1.5rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+    }
+    
+    .cta-buttons .btn {
+        width: 100%;
+    }
+
+    .hero-section {
+        animation-duration: 0.6s;
+    }
+
+    .hero-content h1,
+    .hero-content .lead {
+        animation-duration: 0.6s;
+    }
+}
+</style>
+{% endblock %}

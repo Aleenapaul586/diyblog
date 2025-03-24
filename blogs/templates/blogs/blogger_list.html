@@ -1,0 +1,112 @@
+{% extends "blogs/base.html" %}
+{% load static %}
+
+{% block title %}All Bloggers{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item active">All Bloggers</li>
+{% endblock %}
+
+{% block content %}
+<h1>All Bloggers</h1>
+
+<div class="blogger-list">
+    {% for blogger in blogger_list %}
+        <div class="blogger-card">
+            <div class="blogger-info">
+                {% if blogger.profile_picture %}
+                    <img src="{{ blogger.profile_picture.url }}" alt="{{ blogger.user.username }}" class="profile-pic">
+                {% else %}
+                    <i class="fas fa-user-circle profile-icon"></i>
+                {% endif %}
+                <h2>
+                    <a href="{{ blogger.get_absolute_url }}">{{ blogger.user.username }}</a>
+                </h2>
+                <div class="blogger-meta">
+                    Member since: {{ blogger.joined_date|date:"M. j, Y" }}
+                </div>
+                {% if blogger.bio %}
+                    <div class="blogger-bio">
+                        {{ blogger.bio|truncatewords:30 }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% empty %}
+        <p>No bloggers found.</p>
+    {% endfor %}
+</div>
+
+<style>
+.blogger-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    gap: 1.5rem;
+}
+
+.blogger-card {
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    transition: transform 0.2s;
+}
+
+.blogger-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.blogger-info {
+    text-align: center;
+}
+
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    object-fit: cover;
+}
+
+.profile-icon {
+    font-size: 4rem;
+    color: #6c757d;
+    margin-bottom: 1rem;
+}
+
+.blogger-meta {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 0.5rem 0;
+}
+
+.blogger-bio {
+    color: #444;
+    font-size: 0.95rem;
+    margin-top: 1rem;
+}
+
+h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+h2 a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+h2 a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+    .blogger-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+</style>
+{% endblock %}

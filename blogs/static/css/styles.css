@@ -1,0 +1,126 @@
+/* Global Styles */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar Styles */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+.navbar-brand {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #fff !important;
+}
+
+/* Card Styles */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,.1);
+}
+
+/* Form Styles */
+.form-control {
+    border-radius: 8px;
+    padding: 10px 15px;
+    border: 1px solid #dee2e6;
+}
+
+.form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+/* Button Styles */
+.btn {
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,.1);
+}
+
+/* Alert Styles */
+.alert {
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,.05);
+}
+
+/* Blog Post Styles */
+.blog-post {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.05);
+}
+
+.blog-post-title {
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.blog-post-meta {
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+/* Comment Styles */
+.comment {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+/* Profile Styles */
+.profile-header {
+    background: linear-gradient(135deg, #6c5ce7, #a8a4e6);
+    color: white;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+}
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid white;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+    
+    .card {
+        margin-bottom: 1rem;
+    }
+} 
