@@ -165,6 +165,11 @@ class SearchResultsView(generic.ListView):
             ).distinct()
         return BlogPost.objects.none()
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['query'] = self.request.GET.get('q')
+        return context
+
 @login_required
 def like_post(request, pk):
     post = get_object_or_404(BlogPost, pk=pk)
