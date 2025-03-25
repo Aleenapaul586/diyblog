@@ -35,7 +35,11 @@ urlpatterns = [
     # Authentication URLs
     path('register/', views.register, name='register'),
     path('login/', auth_views.LoginView.as_view(template_name='registration/login.html', next_page='/profile/'), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
+    path('logout/', auth_views.LogoutView.as_view(
+        template_name='registration/logged_out.html',
+        next_page='/',
+        http_method_names=['get', 'post']
+    ), name='logout'),
 
     # Password Reset URLs
     path('password_reset/', auth_views.PasswordResetView.as_view(
